@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Porngram</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}" />
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(
+        {{ res }}
+        );
+
+        var options = {
+          title: ''
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+</head>
+
+<body>
+
+<div class="row">
+  <div class="large-12 columns" style="text-align:center;">
+
+    <h1><font color="#FF0099">PORN</font>GRAM</h1>
+    <hr />
+
+
+    <p>Porngram maps the <b>evolution of words frequency</b> in the titles of almost 800,000 <b>porn videos</b>. Data are provided by the <a href="http://sexualitics.org/"><font color="#FF0099">Sexualitics</font></a> dataset.</p>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://porngram.sexualitics.org" data-text="Mapping evolution of word frequencies in porn" data-via="sexualitics" data-hashtags="PornStudies,DataLove">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <p><i>Type the words you want to map separated by commas</i></p>
+
+    <form action="/" method=get>
+                    <p><input type="text" name="q" value="{{ q }}"></p>
+                    <p><input type="submit" value="Map" class="small round button"><a href="/" style="padding-left:30px"><font color="#FF0099">Random</font></a></p>
+                    <br />
+  </form>
+
+  <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
+  </div>
+
+    <h3 style="text-align:center;"><small><a href="http://sexualitics.org/" target="_blank">ABOUT</a> / <a href="http://github.com/sexualitics/porngram" target="_blank">SOURCE CODE</a> / <a href="http://sexualitics.github.io/" target="_blank">DATASETS</a> / <a href="http://hal.archives-ouvertes.fr/hal-00937745" target="_blank">CITE</a></small></h4>
+
+</div>
+
+
+
+</body>
+</html>
