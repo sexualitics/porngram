@@ -1,1 +1,12 @@
 # PORNGRAM
+
+__More info to come__
+
+## Launch
+
+    cd api
+    go run porngram_api.go
+
+    python hello.py
+
+
