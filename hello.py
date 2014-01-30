@@ -15,6 +15,8 @@ examples = [
 	'blowjob,handjob,titjob,footjob'
 	]
 
+hn_proof = {}
+
 def format_query(query):
 	s = ''
 	for w in query.split(',')[:10]:
@@ -42,10 +44,13 @@ def get_data(query):
 def index():
 	try:
 		q = format_query(request.args['q'])
+		res = get_data(q)
 	except:
 		q = choice(examples)
+		if q not in hn_proof.keys():
+			hn_proof[q] = get_data(q)
+		res = hn_proof[q]
 
-	res = get_data(q)
 	return render_template('index', q=q, res=res)
 
 if __name__ == "__main__":
